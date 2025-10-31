@@ -1,3 +1,4 @@
+#include <X11/XF86keysym.h>
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -102,6 +103,13 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	// function keys
+	{ 0, XF86XK_AudioMute, spawn, SHCMD("amixer set Master toggle") },
+	{ 0, XF86XK_AudioLowerVolume, spawn, SHCMD("amixer set Master 5%- unmute") },
+	{ 0, XF86XK_AudioRaiseVolume, spawn, SHCMD("amixer set Master 5%+ unmute") },
+	{ 0, XF86XK_AudioMicMute, spawn, SHCMD("amixer set Capture toggle") },
+	{ 0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set +10%") },
+	{ 0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 10%-") },
 };
 
 /* button definitions */
